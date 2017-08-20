@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeSolver", "MazeSolver\MazeSolver.csproj", "{4ABBF928-061A-47B9-B960-2ADB7E35CF4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeSolver.Tests", "MazeSolver.Tests\MazeSolver.Tests.csproj", "{EBCCF95A-5862-41AC-9079-F4CDC1BE1BDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ABBF928-061A-47B9-B960-2ADB7E35CF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ABBF928-061A-47B9-B960-2ADB7E35CF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ABBF928-061A-47B9-B960-2ADB7E35CF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ABBF928-061A-47B9-B960-2ADB7E35CF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCCF95A-5862-41AC-9079-F4CDC1BE1BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCCF95A-5862-41AC-9079-F4CDC1BE1BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCCF95A-5862-41AC-9079-F4CDC1BE1BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCCF95A-5862-41AC-9079-F4CDC1BE1BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
