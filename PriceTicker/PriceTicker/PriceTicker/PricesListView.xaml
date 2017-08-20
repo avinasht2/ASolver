@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="PriceTicker.PricesListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PriceTicker"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:PriceValueEnumToColorConverter x:Key="PriceValueEnumToColorConverter" />
+
+        <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#C0C0C0" Offset="0.0" />
+            <GradientStop Color="#5B5B5B" Offset="1.0" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ButtonBorderBrush" Color="#808080" />
+        <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource ButtonBackground}" />
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonBorderBrush}" />
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" StrokeThickness="1" RadiusX="5" RadiusY="5" Stroke="#999999" StrokeDashArray="1 2" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <Grid>
+                                <Border x:Name="hoverSheen" Background="#0F000000" CornerRadius="5" Opacity="0.0" />
+
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="hoverSheen" Property="Opacity" Value="1.0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.4" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Update Frequency (in ms): " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+            <ComboBox IsSynchronizedWithCurrentItem="True" VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding UpdateFrequencies}" Width="100" Height="25" />
+        </StackPanel>
+        <ListView Grid.Row="1" Margin="10" Name="priceList" ItemsSource="{Binding InstrumentViewModelCollection}" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="InstrumentId"
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding InstrumentId}" />
+                    <GridViewColumn Header="BidPx"
+                                    Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Background="{Binding AskPriceValueEnum, Converter={StaticResource PriceValueEnumToColorConverter}}">
+                                    <TextBlock Text="{Binding BidPx, StringFormat={}{0:0.00}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="BidQty"
+                                    Width="50"
+                                    DisplayMemberBinding="{Binding BidQty}" />
+                    <GridViewColumn Header="AskPx"
+                                    Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Background="{Binding BidPriceValueEnum, Converter={StaticResource PriceValueEnumToColorConverter}}">
+                                    <TextBlock Text="{Binding AskPx, StringFormat={}{0:0.00}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="AskQty"
+                                    Width="50"
+                                    DisplayMemberBinding="{Binding AskQty}" />
+                    <GridViewColumn Header="Volume"
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding Volume}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Start" Command="{Binding StartCommand}" Margin="10" Height="35" Width="75" />
+            <Button Grid.Column="2" Content="Stop" Command="{Binding StopCommand}" Margin="10" Height="35" Width="75" />
+        </Grid>
+    </Grid>
+</UserControl>

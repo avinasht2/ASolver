@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceTicker", "PriceTicker\PriceTicker.csproj", "{D8928F8E-A379-4D9D-9BF9-8308DCEDF535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceTicker.Service", "PriceTicker.Service\PriceTicker.Service.csproj", "{F37AEC20-5D41-4CB3-B388-F145F41F27FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceTicker.Tests", "PriceTicker.Tests\PriceTicker.Tests.csproj", "{98CDFB3B-0669-4F65-8D1D-556946129253}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8928F8E-A379-4D9D-9BF9-8308DCEDF535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8928F8E-A379-4D9D-9BF9-8308DCEDF535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8928F8E-A379-4D9D-9BF9-8308DCEDF535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8928F8E-A379-4D9D-9BF9-8308DCEDF535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37AEC20-5D41-4CB3-B388-F145F41F27FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37AEC20-5D41-4CB3-B388-F145F41F27FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37AEC20-5D41-4CB3-B388-F145F41F27FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37AEC20-5D41-4CB3-B388-F145F41F27FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CDFB3B-0669-4F65-8D1D-556946129253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CDFB3B-0669-4F65-8D1D-556946129253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CDFB3B-0669-4F65-8D1D-556946129253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CDFB3B-0669-4F65-8D1D-556946129253}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
